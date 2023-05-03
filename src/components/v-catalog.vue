@@ -48,13 +48,13 @@ export default {
     loading: false,
   }),
   async created() {
-    axios.get("https://e-commerce-deploy-vue-3.herokuapp.com/api/products").then((r) => {
+    axios.get("/api/products").then((r) => {
       r.data.forEach((element) => {
         if (element.rating.count == 0) {
-          axios.delete(`/deleteProduct/${element._id}`);
+          axios.delete(`/api/deleteProduct/${element._id}`);
         }
       });
-      axios.get("https://e-commerce-deploy-vue-3.herokuapp.com/api/products").then((r) => {
+      axios.get("/api/products").then((r) => {
         this.products = r.data;
         this.loading = true;
       });
