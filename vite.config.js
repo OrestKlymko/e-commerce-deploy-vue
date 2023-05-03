@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
-      '/api': 'e-com-website-on-vue-3.herokuapp.com',
+      '/api': 'https://e-com-website-on-vue-3.herokuapp.com',
     },
   },
 
