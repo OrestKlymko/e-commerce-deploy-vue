@@ -82,7 +82,7 @@ export default {
     },
     async onSubmit() {
       if (this.validateForm()) {
-        axios.post("/success", {
+        axios.post("/api/success", {
           name: this.name,
           country: this.selectedCountry,
           fastDelivery: this.delivery ? "Yes" : "No",
@@ -95,7 +95,7 @@ export default {
             };
           }),
         });
-        axios.get("/products").then((r) => {
+        axios.get("/api/products").then((r) => {
           let temporaryArray = [];
           for (let data in r.data) {
             for (let i = 0; i < this.$store.state.addToCartProd.length; i++) {
@@ -113,7 +113,7 @@ export default {
                         this.$store.state.addToCartProd[i].count,
                     },
                   };
-                  axios.patch(`/productReload/${e._id}`, update);
+                  axios.patch(`/api/productReload/${e._id}`, update);
                 }
               });
             }
