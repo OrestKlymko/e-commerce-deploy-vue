@@ -15,7 +15,7 @@
   <v-footer />
 </template>
 <script>
-import MenuNavigation from "@/components/v-menu.vue";
+import MenuNavigation from "../components/v-menu.vue";
 import VFooter from "./v-footer.vue";
 export default {
   components: { MenuNavigation, VFooter },

@@ -35,7 +35,7 @@
 
 <script>
 import axios from "axios";
-import MenuNavigation from "@/components/v-menu.vue";
+import MenuNavigation from "../components/v-menu.vue";
 import VFooter from "./v-footer.vue";
 import Notiflix from "notiflix";
 
