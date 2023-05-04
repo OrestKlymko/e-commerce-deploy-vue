@@ -82,20 +82,20 @@ export default {
     },
     async onSubmit() {
       if (this.validateForm()) {
-        axios.post("/api/success", {
-          name: this.name,
-          country: this.selectedCountry,
-          fastDelivery: this.delivery ? "Yes" : "No",
-          totalAmount: await this.totalPrice(),
-          item: this.$store.state.addToCartProd.map((e) => {
-            return {
-              name_item: e.title,
-              quantity: e.count,
-              price: e.price * e.count,
-            };
-          }),
+        await axios.post("https://e-commerce-deploy-vue.vercel.app/api/products", {
+            name: this.name,
+            country: this.selectedCountry,
+            fastDelivery: this.delivery ? "Yes" : "No",
+            totalAmount: await this.totalPrice(),
+            item: this.$store.state.addToCartProd.map((e) => {
+                return {
+                    name_item: e.title,
+                    quantity: e.count,
+                    price: e.price * e.count,
+                };
+            }),
         });
-        axios.get("/api/products").then((r) => {
+        axios.get("https://e-commerce-deploy-vue.vercel.app/api/products").then((r) => {
           let temporaryArray = [];
           for (let data in r.data) {
             for (let i = 0; i < this.$store.state.addToCartProd.length; i++) {
@@ -113,7 +113,7 @@ export default {
                         this.$store.state.addToCartProd[i].count,
                     },
                   };
-                  axios.patch(`/api/productReload/${e._id}`, update);
+                  axios.patch(`https://e-commerce-deploy-vue.vercel.app/api/products/${e._id}`, update);
                 }
               });
             }

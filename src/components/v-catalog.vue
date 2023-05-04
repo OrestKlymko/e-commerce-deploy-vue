@@ -48,13 +48,13 @@ export default {
     loading: false,
   }),
   async created() {
-    axios.get("/api/products").then((r) => {
+    axios.get("https://e-commerce-deploy-vue.vercel.app/api/products").then((r) => {
       r.data.forEach((element) => {
         if (element.rating.count == 0) {
-          axios.delete(`/api/deleteProduct/${element._id}`);
+          axios.delete(`https://e-commerce-deploy-vue.vercel.app/api/products/${element._id}`);
         }
       });
-      axios.get("/api/products").then((r) => {
+      axios.get("https://e-commerce-deploy-vue.vercel.app/api/products").then((r) => {
         this.products = r.data;
         this.loading = true;
       });
