@@ -48,13 +48,13 @@ export default {
     loading: false,
   }),
   async created() {
-    axios.get("https://e-commerce-deploy-vue.vercel.app/api/products").then((r) => {
+    axios.get("https://e-com-website-on-vue-3.herokuapp.com/api/products").then((r) => {
       r.data.forEach((element) => {
         if (element.rating.count == 0) {
-          axios.delete(`https://e-commerce-deploy-vue.vercel.app/api/products/${element._id}`);
+          axios.delete(`https://e-com-website-on-vue-3.herokuapp.com/api/products/${element._id}`);
         }
       });
-      axios.get("https://e-commerce-deploy-vue.vercel.app/api/products").then((r) => {
+      axios.get("https://e-com-website-on-vue-3.herokuapp.com/api/products").then((r) => {
         this.products = r.data;
         this.loading = true;
       });

@@ -82,7 +82,7 @@ export default {
     },
     async onSubmit() {
       if (this.validateForm()) {
-        await axios.post("https://e-commerce-deploy-vue.vercel.app/api/products", {
+        await axios.post("https://e-com-website-on-vue-3.herokuapp.com/api/products", {
             name: this.name,
             country: this.selectedCountry,
             fastDelivery: this.delivery ? "Yes" : "No",
@@ -95,7 +95,7 @@ export default {
                 };
             }),
         });
-        axios.get("https://e-commerce-deploy-vue.vercel.app/api/products").then((r) => {
+        axios.get("https://e-com-website-on-vue-3.herokuapp.com/api/products").then((r) => {
           let temporaryArray = [];
           for (let data in r.data) {
             for (let i = 0; i < this.$store.state.addToCartProd.length; i++) {
@@ -113,7 +113,7 @@ export default {
                         this.$store.state.addToCartProd[i].count,
                     },
                   };
-                  axios.patch(`https://e-commerce-deploy-vue.vercel.app/api/products/${e._id}`, update);
+                  axios.patch(`https://e-com-website-on-vue-3.herokuapp.com/api/products/${e._id}`, update);
                 }
               });
             }
